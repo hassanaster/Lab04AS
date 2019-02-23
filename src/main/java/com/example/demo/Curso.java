@@ -31,15 +31,40 @@ public class Curso {
 	@SequenceGenerator(name = "curso_Sequence", sequenceName = "CURSO_SEQ")
 	private Long idcurso;
 	
-	@Column(name = "idprofesor")
-	private Long idprofesor;
-	
 	@Column(name = "nombre")
 	private String nombre;
 	
 	@Column(name = "descripcion")
 	private String descripcion;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idprofesor",	nullable = false)
+	private Profesor profesor;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy	= "curso")
-	private List<Curso> cursos;
+	private List<Alumno> alumnos;
+	
+	public Long getId() {
+		return idcurso;
+	}
+
+	public void setId(Long id) {
+		this.idcurso = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Alumno> getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
 }
