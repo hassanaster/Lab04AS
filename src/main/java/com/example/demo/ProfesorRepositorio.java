@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 	@Repository
 	public interface ProfesorRepositorio extends CrudRepository<Profesor, Long> {
-	    List<Profesor> findByCursoIdprofesor(long CursoIdprofesor);
+	    List<Profesor> findByCursos (long cursoId);
 	}
 
