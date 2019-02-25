@@ -39,6 +39,6 @@ public class ColegioController {
 	@GetMapping(path = "/all/{id}")
 	public @ResponseBody Iterable<String> getAllUsers(@PathVariable("id") Long cursoId){
 		
-		return colegioServices.getAllCourseStudents(cursoId);
+		return colegioServices.getAllCursoAlumnos(cursoId);
 	}
 }

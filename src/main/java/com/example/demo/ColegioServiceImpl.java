@@ -15,7 +15,7 @@ public class ColegioServiceImpl {
 	@Autowired
 	private CursoRepositorio Crepositorio;
 	
-	public List<String> getAllCourseStudents(long cursoId){
+	public List<String>  getAllCursoAlumnos(long cursoId){
 		List<String> result = new ArrayList<String>();
 		List<Alumno> alumnos = Arepositorio.findByCursoIdcurso(cursoId);
 		for(Alumno alumno : alumnos) {
@@ -24,8 +24,7 @@ public class ColegioServiceImpl {
 		return result;
 	}
 	
-	public void addStudentToCourse(String nombre, String telefono, String direccion, String descripcion, Long cursoId) {
-		Curso curso = Crepositorio.findById(cursoId).get(); 
+	public void addAlumnoToCurso(String nombre, String telefono, String direccion, String descripcion, Long cursoId) {
 		Alumno alumno = new Alumno();
 		alumno.setNombre(nombre);
 		alumno.setTelefono(telefono);
@@ -33,4 +32,10 @@ public class ColegioServiceImpl {
 		alumno.setDescripcion(descripcion);
 		Arepositorio.save(alumno);
 	}
+	
+	public String getCurso(Long cursoId) {
+		return Crepositorio.findById(cursoId).get().getNombre();
+	}
+	
+
 }
